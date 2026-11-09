@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Librarian · Biblioteca y librería</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/estilos.css">
+</head>
+<body>
+
+    <!-- ===== Acceso: login y registro ===== -->
+    <section class="acceso" id="pantalla-acceso" hidden>
+        <div class="acceso__portada">
+            <div class="marca"><span class="marca__icono">L</span> Librarian</div>
+            <h1 class="acceso__lema">Cada libro, en su <em>lugar</em>.</h1>
+            <p class="acceso__nota">Catálogo, préstamos, ventas e inventario de tu biblioteca en un solo sitio. Protegido con límites de peticiones para que nadie sature el servidor.</p>
+        </div>
+
+        <div class="acceso__panel">
+            <div class="acceso__caja">
+                <h2 id="acceso-titulo">Bienvenido de nuevo</h2>
+                <p id="acceso-subtitulo">Inicia sesión para continuar.</p>
+
+                <div class="pestanas" role="tablist">
+                    <button role="tab" aria-selected="true" data-pestana="login">Iniciar sesión</button>
+                    <button role="tab" aria-selected="false" data-pestana="registro">Crear cuenta</button>
+                </div>
+
+                <form id="form-login" class="campos">
+                    <div class="campo"><label for="login-email">Correo</label><input id="login-email" name="email" type="email" autocomplete="username" required></div>
+                    <div class="campo"><label for="login-clave">Contraseña</label><input id="login-clave" name="clave" type="password" autocomplete="current-password" required></div>
+                    <button class="btn btn--bloque" type="submit">Entrar</button>
+                </form>
+
+                <form id="form-registro" class="campos campos--2" hidden>
+                    <div class="campo campo--ancho"><label>Nombre completo</label><input name="nombre" required></div>
+                    <div class="campo"><label>Identificación (DPI)</label><input name="identificacion" inputmode="numeric" required><small>No se puede cambiar después.</small></div>
+                    <div class="campo"><label>Teléfono</label><input name="telefono" required></div>
+                    <div class="campo campo--ancho"><label>Dirección</label><input name="direccion" required></div>
+                    <div class="campo"><label>Correo</label><input name="email" type="email" autocomplete="username" required></div>
+                    <div class="campo"><label>Contraseña</label><input name="clave" type="password" minlength="8" autocomplete="new-password" required></div>
+                    <button class="btn btn--bloque campo--ancho" type="submit">Crear mi cuenta</button>
+                </form>
+
+                <div class="demo">
+                    Cuentas de prueba:
+                    <button type="button" data-demo="admin">administración</button> ·
+                    <button type="button" data-demo="usuario">lectora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== Aplicación ===== -->
+    <div class="app" id="pantalla-app" hidden>
+        <aside class="lateral">
+            <div class="marca"><span class="marca__icono">L</span> Librarian</div>
+            <nav class="menu" id="menu"></nav>
+
+            <div class="cuenta">
+                <div class="cupo" id="cupo" title="Peticiones que te quedan en esta ventana de tiempo (express-rate-limit)">
+                    <div class="cupo__fila"><span>Cupo de peticiones</span><strong id="cupo-texto">—</strong></div>
+                    <div class="cupo__barra"><div id="cupo-barra"></div></div>
+                </div>
+                <div class="cuenta__persona">
+                    <div class="avatar" id="avatar">?</div>
+                    <div>
+                        <div class="cuenta__nombre" id="cuenta-nombre"></div>
+                        <div class="cuenta__rol" id="cuenta-rol"></div>
+                    </div>
+                </div>
+                <button class="btn btn--suave btn--bloque" id="btn-salir">Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <main class="contenido" id="vista"></main>
+    </div>
+
+    <dialog id="modal">
+        <form method="dialog" id="modal-form">
+            <div class="modal__cabeza"><h3 id="modal-titulo"></h3><button value="cancelar" aria-label="Cerrar">×</button></div>
+            <div class="modal__cuerpo" id="modal-cuerpo"></div>
+            <div class="modal__pie" id="modal-pie"></div>
+        </form>
+    </dialog>
+
+    <div class="avisos" id="avisos" aria-live="polite"></div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

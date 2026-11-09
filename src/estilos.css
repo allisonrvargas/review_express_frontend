@@ -1,0 +1,271 @@
+/* ============================================================
+   Librarian — estilo editorial de biblioteca
+   Papel crema, tinta verde bosque y acentos terracota.
+   ============================================================ */
+
+:root {
+    --papel: #f4efe6;
+    --hoja: #fbf8f2;
+    --tinta: #1d2a25;
+    --tinta-suave: #5d6b65;
+    --linea: #e3d9c7;
+    --bosque: #24493d;
+    --bosque-hover: #1b382f;
+    --bosque-claro: #e1ebe5;
+    --terracota: #b5562f;
+    --terracota-claro: #f6e3d8;
+    --mostaza: #b8871f;
+    --mostaza-claro: #f7ecd2;
+    --rojo: #a3352a;
+    --rojo-claro: #f7dfdb;
+
+    --serif: "Fraunces", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+    --radio: 10px;
+    --sombra: 0 1px 2px rgba(29, 42, 37, .06), 0 6px 20px rgba(29, 42, 37, .06);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--tinta);
+    background: var(--papel);
+}
+h1, h2, h3 { font-family: var(--serif); font-weight: 600; letter-spacing: -.01em; margin: 0; }
+button, input, select { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+
+/* ---------- Pantalla de acceso ---------- */
+.acceso {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+}
+.acceso__portada {
+    background: var(--bosque);
+    color: var(--hoja);
+    padding: 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+/* Lomos de libros decorativos */
+.acceso__portada::after {
+    content: "";
+    position: absolute;
+    right: -40px; bottom: 0;
+    width: 360px; height: 260px;
+    background:
+        linear-gradient(90deg,
+            #b5562f 0 38px, transparent 38px 46px,
+            #e8dcc4 46px 70px, transparent 70px 78px,
+            #c99a2e 78px 122px, transparent 122px 130px,
+            #3c6b5c 130px 160px, transparent 160px 168px,
+            #f4efe6 168px 200px, transparent 200px 208px,
+            #8a3f22 208px 250px, transparent 250px);
+    opacity: .9;
+    clip-path: polygon(0 30%, 11% 30%, 11% 12%, 20% 12%, 20% 40%, 35% 40%, 35% 22%, 46% 22%, 46% 5%, 56% 5%, 56% 35%, 70% 35%, 70% 18%, 100% 18%, 100% 100%, 0 100%);
+}
+.marca { display: flex; align-items: center; gap: 10px; font-family: var(--serif); font-size: 1.35rem; font-weight: 600; }
+.marca__icono {
+    width: 34px; height: 34px; border-radius: 8px;
+    display: grid; place-items: center;
+    background: var(--terracota); color: var(--hoja); font-size: 1.1rem;
+}
+.acceso__lema { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; max-width: 12ch; margin: 0; }
+.acceso__lema em { color: #f0c9a8; font-style: italic; }
+.acceso__portada > * { position: relative; z-index: 1; }
+.acceso__nota { max-width: 34ch; color: #cfe0d7; position: relative; z-index: 1; }
+
+.acceso__panel { display: grid; place-items: center; padding: 40px 24px; }
+.acceso__caja { width: min(420px, 100%); }
+.acceso__caja h2 { font-size: 1.8rem; margin-bottom: 4px; }
+.acceso__caja > p { color: var(--tinta-suave); margin: 0 0 24px; }
+
+.pestanas { display: flex; gap: 4px; background: var(--hoja); border: 1px solid var(--linea); border-radius: 999px; padding: 4px; margin-bottom: 24px; }
+.pestanas button {
+    flex: 1; border: 0; background: transparent; padding: 8px 12px; border-radius: 999px; cursor: pointer; color: var(--tinta-suave); font-weight: 500;
+}
+.pestanas button[aria-selected="true"] { background: var(--bosque); color: var(--hoja); }
+
+.demo { margin-top: 20px; padding: 14px; border: 1px dashed var(--linea); border-radius: var(--radio); font-size: .85rem; color: var(--tinta-suave); }
+.demo button { background: none; border: 0; color: var(--bosque); text-decoration: underline; cursor: pointer; padding: 0; }
+
+/* ---------- Formularios ---------- */
+.campos { display: grid; gap: 14px; }
+.campos--2 { grid-template-columns: 1fr 1fr; }
+.campo { display: grid; gap: 5px; }
+.campo--ancho { grid-column: 1 / -1; }
+.campo label { font-size: .8rem; font-weight: 600; color: var(--tinta-suave); text-transform: uppercase; letter-spacing: .04em; }
+.campo input, .campo select {
+    width: 100%; padding: 10px 12px; border: 1px solid var(--linea); border-radius: 8px; background: #fff; transition: border-color .15s, box-shadow .15s;
+}
+.campo input:focus, .campo select:focus { outline: none; border-color: var(--bosque); box-shadow: 0 0 0 3px var(--bosque-claro); }
+.campo input:disabled { background: var(--papel); color: var(--tinta-suave); }
+.campo small { color: var(--tinta-suave); font-size: .78rem; }
+
+/* ---------- Botones ---------- */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 10px 16px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; font-weight: 600; font-size: .9rem;
+    background: var(--bosque); color: var(--hoja); transition: background .15s, transform .05s;
+}
+.btn:hover { background: var(--bosque-hover); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.btn--bloque { width: 100%; }
+.btn--suave { background: var(--hoja); color: var(--tinta); border-color: var(--linea); }
+.btn--suave:hover { background: var(--papel); }
+.btn--acento { background: var(--terracota); }
+.btn--acento:hover { background: #9a4626; }
+.btn--peligro { background: transparent; color: var(--rojo); border-color: var(--rojo-claro); }
+.btn--peligro:hover { background: var(--rojo-claro); }
+.btn--mini { padding: 5px 10px; font-size: .8rem; }
+
+/* ---------- Estructura de la app ---------- */
+.app { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+.lateral {
+    background: var(--hoja); border-right: 1px solid var(--linea); padding: 22px 16px;
+    display: flex; flex-direction: column; gap: 24px; position: sticky; top: 0; height: 100vh;
+}
+.lateral .marca { color: var(--tinta); padding: 0 8px; }
+.menu { display: grid; gap: 2px; }
+.menu__titulo { font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; color: var(--tinta-suave); padding: 0 10px 6px; }
+.menu button {
+    display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+    padding: 9px 10px; border-radius: 8px; border: 0; background: transparent; cursor: pointer; color: var(--tinta-suave); font-weight: 500;
+}
+.menu button:hover { background: var(--papel); color: var(--tinta); }
+.menu button[aria-current="page"] { background: var(--bosque-claro); color: var(--bosque); font-weight: 600; }
+.menu button span:first-child { width: 20px; text-align: center; }
+
+.cuenta { margin-top: auto; display: grid; gap: 12px; }
+.cuenta__persona { display: flex; gap: 10px; align-items: center; padding: 0 6px; }
+.avatar {
+    width: 36px; height: 36px; border-radius: 50%; flex: none; display: grid; place-items: center;
+    background: var(--terracota-claro); color: var(--terracota); font-weight: 700; font-family: var(--serif);
+}
+.cuenta__nombre { font-weight: 600; font-size: .9rem; line-height: 1.2; }
+.cuenta__rol { font-size: .75rem; color: var(--tinta-suave); }
+
+/* Medidor del rate limit: un marcapáginas que se va vaciando */
+.cupo { border: 1px solid var(--linea); border-radius: var(--radio); padding: 12px; background: var(--papel); }
+.cupo__fila { display: flex; justify-content: space-between; font-size: .78rem; color: var(--tinta-suave); margin-bottom: 8px; }
+.cupo__fila strong { color: var(--tinta); font-variant-numeric: tabular-nums; }
+.cupo__barra { height: 6px; border-radius: 999px; background: var(--linea); overflow: hidden; }
+.cupo__barra div { height: 100%; width: 100%; background: var(--bosque); transition: width .3s, background .3s; }
+.cupo[data-nivel="medio"] .cupo__barra div { background: var(--mostaza); }
+.cupo[data-nivel="bajo"] .cupo__barra div { background: var(--rojo); }
+
+.contenido { padding: 32px clamp(16px, 4vw, 48px) 64px; max-width: 1200px; width: 100%; }
+.encabezado { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.encabezado h1 { font-size: 2rem; }
+.encabezado p { margin: 4px 0 0; color: var(--tinta-suave); }
+
+/* ---------- Tarjetas y métricas ---------- */
+.tarjeta { background: var(--hoja); border: 1px solid var(--linea); border-radius: var(--radio); padding: 20px; box-shadow: var(--sombra); }
+.tarjeta h3 { font-size: 1.1rem; margin-bottom: 14px; }
+.rejilla { display: grid; gap: 16px; }
+.rejilla--metricas { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); margin-bottom: 20px; }
+.rejilla--2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+.metrica { padding: 18px 20px; }
+.metrica__etiqueta { font-size: .78rem; color: var(--tinta-suave); text-transform: uppercase; letter-spacing: .05em; }
+.metrica__valor { font-family: var(--serif); font-size: 2rem; font-weight: 600; line-height: 1.1; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.metrica__pie { font-size: .8rem; color: var(--tinta-suave); margin-top: 4px; }
+
+.lista-simple { list-style: none; margin: 0; padding: 0; }
+.lista-simple li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--linea); font-size: .9rem; }
+.lista-simple li:last-child { border-bottom: 0; }
+.lista-simple .vacio { color: var(--tinta-suave); justify-content: center; }
+
+.barras { display: grid; gap: 10px; }
+.barras__fila { display: grid; grid-template-columns: 110px 1fr 32px; gap: 10px; align-items: center; font-size: .85rem; }
+.barras__pista { height: 10px; background: var(--papel); border-radius: 4px; overflow: hidden; }
+.barras__pista div { height: 100%; background: var(--terracota); border-radius: 4px; }
+.barras__fila span:last-child { text-align: right; font-variant-numeric: tabular-nums; color: var(--tinta-suave); }
+
+/* ---------- Barra de herramientas ---------- */
+.herramientas { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.buscador { flex: 1 1 260px; position: relative; }
+.buscador input { width: 100%; padding: 10px 12px 10px 36px; border: 1px solid var(--linea); border-radius: 8px; background: var(--hoja); }
+.buscador::before { content: "⌕"; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--tinta-suave); font-size: 1.1rem; }
+.herramientas select { padding: 10px 12px; border: 1px solid var(--linea); border-radius: 8px; background: var(--hoja); }
+
+/* ---------- Catálogo en tarjetas tipo lomo ---------- */
+.estante { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.libro {
+    background: var(--hoja); border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden;
+    display: flex; flex-direction: column; box-shadow: var(--sombra); transition: transform .15s;
+}
+.libro:hover { transform: translateY(-2px); }
+.libro__lomo { height: 8px; }
+.libro__cuerpo { padding: 16px; display: grid; gap: 6px; flex: 1; }
+.libro__genero { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--terracota); font-weight: 600; }
+.libro__titulo { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; line-height: 1.25; }
+.libro__autor { color: var(--tinta-suave); font-size: .9rem; }
+.libro__datos { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; }
+.libro__precio { font-weight: 700; font-variant-numeric: tabular-nums; }
+.libro__acciones { display: flex; gap: 6px; padding: 0 16px 16px; }
+.libro__acciones .btn { flex: 1; }
+
+/* ---------- Etiquetas de estado ---------- */
+.etiqueta { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: .74rem; font-weight: 600; white-space: nowrap; }
+.etiqueta--ok { background: var(--bosque-claro); color: var(--bosque); }
+.etiqueta--aviso { background: var(--mostaza-claro); color: #7d5a10; }
+.etiqueta--error { background: var(--rojo-claro); color: var(--rojo); }
+.etiqueta--neutra { background: var(--papel); color: var(--tinta-suave); }
+
+/* ---------- Tablas ---------- */
+.tabla-caja { overflow-x: auto; border: 1px solid var(--linea); border-radius: var(--radio); background: var(--hoja); }
+table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+th { text-align: left; font-size: .74rem; text-transform: uppercase; letter-spacing: .05em; color: var(--tinta-suave); font-weight: 600; padding: 12px 14px; border-bottom: 1px solid var(--linea); background: var(--papel); }
+td { padding: 12px 14px; border-bottom: 1px solid var(--linea); vertical-align: middle; }
+tr:last-child td { border-bottom: 0; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.sub { display: block; font-size: .78rem; color: var(--tinta-suave); font-weight: 400; }
+.vacio-grande { text-align: center; padding: 48px 16px; color: var(--tinta-suave); }
+.vacio-grande strong { display: block; font-family: var(--serif); font-size: 1.2rem; color: var(--tinta); margin-bottom: 4px; }
+
+/* ---------- Carrito de venta ---------- */
+.venta { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; align-items: start; }
+.carrito__linea { display: grid; grid-template-columns: 1fr 70px 80px 28px; gap: 8px; align-items: center; padding: 10px 0; border-bottom: 1px dashed var(--linea); font-size: .9rem; }
+.carrito__linea input { width: 100%; padding: 6px; border: 1px solid var(--linea); border-radius: 6px; text-align: center; }
+.carrito__quitar { border: 0; background: none; color: var(--rojo); cursor: pointer; font-size: 1.1rem; }
+.carrito__total { display: flex; justify-content: space-between; font-family: var(--serif); font-size: 1.4rem; font-weight: 600; padding: 16px 0; }
+
+/* ---------- Modal ---------- */
+dialog { border: 0; border-radius: 14px; padding: 0; width: min(560px, calc(100vw - 32px)); background: var(--hoja); color: var(--tinta); box-shadow: 0 20px 60px rgba(0,0,0,.25); }
+dialog::backdrop { background: rgba(29, 42, 37, .45); }
+.modal__cabeza { padding: 20px 24px 0; display: flex; justify-content: space-between; align-items: center; }
+.modal__cabeza button { border: 0; background: none; font-size: 1.4rem; cursor: pointer; color: var(--tinta-suave); }
+.modal__cuerpo { padding: 20px 24px; max-height: 70vh; overflow: auto; }
+.modal__pie { padding: 0 24px 20px; display: flex; justify-content: flex-end; gap: 8px; }
+
+/* ---------- Avisos (toasts) ---------- */
+.avisos { position: fixed; right: 20px; bottom: 20px; display: grid; gap: 8px; z-index: 50; width: min(360px, calc(100vw - 40px)); }
+.aviso {
+    background: var(--tinta); color: var(--hoja); padding: 12px 16px; border-radius: 10px; box-shadow: var(--sombra);
+    border-left: 4px solid var(--bosque-claro); animation: entrar .2s ease-out; font-size: .9rem;
+}
+.aviso--error { border-left-color: #ef9a8f; }
+.aviso--limite { background: var(--terracota); border-left-color: var(--mostaza-claro); }
+.aviso ul { margin: 6px 0 0; padding-left: 18px; }
+@keyframes entrar { from { opacity: 0; transform: translateY(8px); } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .acceso { grid-template-columns: 1fr; }
+    .acceso__portada { padding: 32px 24px; min-height: 240px; }
+    .acceso__portada::after { width: 220px; height: 160px; opacity: .25; z-index: 0; }
+    .app { grid-template-columns: 1fr; }
+    .lateral { position: static; height: auto; flex-direction: column; }
+    .menu { grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); }
+    .venta { grid-template-columns: 1fr; }
+    .campos--2 { grid-template-columns: 1fr; }
+}
