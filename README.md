@@ -7,6 +7,10 @@ Interfaz web de **Librarian**, un sistema para administrar una biblioteca-librer
 
 ![Resumen de administración](docs/resumen.png)
 
+![Catálogo vista de lectora](docs/catalogo.jpg)
+
+**Demo en vivo:** https://allisonrvargas.github.io/review_express_frontend/ (usa los enlaces de cuentas de prueba de la pantalla de entrada).
+
 ---
 
 ## 🧩 El proyecto completo
