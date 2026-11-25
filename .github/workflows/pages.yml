@@ -28,7 +28,7 @@ jobs:
         env:
           VITE_BASE: /review_express_frontend/
           VITE_API_URL: ${{ vars.VITE_API_URL || 'https://librarian-backend.vercel.app/api' }}
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
