@@ -1,5 +1,8 @@
 # 📚 Librarian · Frontend
 
+[![CI](https://github.com/allisonrvargas/review_express_frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/allisonrvargas/review_express_frontend/actions/workflows/ci.yml)
+[![Licencia: MIT](https://img.shields.io/badge/licencia-MIT-green.svg)](LICENSE)
+
 Interfaz web de **Librarian**, un sistema para administrar una biblioteca-librería: catálogo e inventario de libros, préstamos, ventas y clientes. Hecha con **HTML, CSS y JavaScript sin frameworks**, servida con **Vite**.
 
 > Este repositorio es **solo el frontend**. Necesita la API para funcionar:
@@ -73,6 +76,13 @@ En la pantalla de entrada hay enlaces que llenan estas cuentas automáticamente:
 | Usuario (lectora) | `ana@correo.com` | `Lector123*` |
 
 ---
+
+## 🧪 Pruebas
+
+```bash
+npm test
+```n
+18 pruebas con `node:test`, sin navegador ni servidor: el cliente de la API (token Bearer, consulta sin valores vacíos, errores, sesión vencida, falta de conexión y lectura del cupo de peticiones) y las utilidades de interfaz (escape de HTML, moneda, fechas, etiquetas y `debounce`). El CI también compila el proyecto con Vite en cada cambio.
 
 ## 🖥 Pantallas
 
