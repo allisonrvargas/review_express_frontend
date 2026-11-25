@@ -169,6 +169,6 @@ Hecho por **Allison Vargas** · API en 👉 [review_express_backend](https://git
 
 Cada push a `main` publica el sitio con GitHub Actions en https://allisonrvargas.github.io/review_express_frontend/
 
-- La API se toma de la variable de repositorio `VITE_API_URL`. Si no existe, usa `https://librarian-backend.onrender.com/api`.
+- La API se toma de la variable de repositorio `VITE_API_URL`. Si no existe, usa `https://librarian-backend.vercel.app/api`.
 - `VITE_BASE` ajusta la ruta base de Vite para que carguen los estilos y scripts en la subruta de Pages.
 - Hace falta que el [backend](https://github.com/allisonrvargas/review_express_backend) esté desplegado. Con el plan gratuito de Render, la primera petición puede tardar unos segundos en despertar el servicio.
